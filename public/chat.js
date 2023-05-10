@@ -11,7 +11,7 @@ socket.on('update_messages', (messages) => {
     updateMessagesOnScreen(messages)
 })
 
-// Função para atualizar as mensagens na tela.ß
+// Função para atualizar as mensagens na tela.
 function updateMessagesOnScreen(messages) {
     const div_messages = document.querySelector('#messages');
 

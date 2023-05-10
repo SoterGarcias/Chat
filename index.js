@@ -31,7 +31,7 @@ const grupo1 = io.of('/grupo1').on('connection', (socket) => {
     })
 })
 
-// Tratando as conexões para o grupo2.ß
+// Tratando as conexões para o grupo2.
 const grupo2 = io.of('/grupo2').on('connection', (socket) => {
     console.log('New connection')
     socket.emit('update_messages', messages.grupo2)
