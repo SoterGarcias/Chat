@@ -1,20 +1,20 @@
-// Obtendo o nome da sala do URL
+// Obtendo o nome da sala do URL.
 const room = window.location.pathname.replace(/\//g, '');
 console.log(room);
-// Iniciando o socket.io no cliente
+// Iniciando o socket.io no cliente.
 const socket = io(`http://localhost:3000/${room}`)
 
 let user = null;
 
-// Ouvindo o evento de atualização de mensagens
-socket.on('update_messages', (messages) =>{
+// Ouvindo o evento de atualização de mensagens.
+socket.on('update_messages', (messages) => {
     updateMessagesOnScreen(messages)
 })
 
-// Função para atualizar as mensagens na tela
-function updateMessagesOnScreen(messages){
+// Função para atualizar as mensagens na tela.ß
+function updateMessagesOnScreen(messages) {
     const div_messages = document.querySelector('#messages');
-    
+
     let list_messages = ''
     messages.forEach(message => {
         const messageClass = message.user === user ? 'sent' : 'received';
@@ -26,19 +26,19 @@ function updateMessagesOnScreen(messages){
 }
 
 
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('#message_form');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        if(!user){
+        if (!user) {
             alert('Defina um usuário');
             return;
         }
 
         const message = document.forms['message_form_name']['msg'].value;
         document.forms['message_form_name']['msg'].value = ''
-        socket.emit('New_message', {user: user, msg: message})
+        socket.emit('New_message', { user: user, msg: message })
         console.log(message);
     })
 
