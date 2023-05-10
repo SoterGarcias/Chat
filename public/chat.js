@@ -1,18 +1,17 @@
-
-//replace é usado para retirar a / do nome que está vindo.
-// usando assim replace('/', '') ele retira apenas um barra e traz mais outra
-// para retirar as duas foi feito conforme abaixo ele fala que a palavra está entre barras
-// o g é para fazer em todas as recorencias 
+// Obtendo o nome da sala do URL
 const room = window.location.pathname.replace(/\//g, '');
 console.log(room);
+// Iniciando o socket.io no cliente
 const socket = io(`http://localhost:3000/${room}`)
 
 let user = null;
 
+// Ouvindo o evento de atualização de mensagens
 socket.on('update_messages', (messages) =>{
     updateMessagesOnScreen(messages)
 })
 
+// Função para atualizar as mensagens na tela
 function updateMessagesOnScreen(messages){
     const div_messages = document.querySelector('#messages');
     
@@ -25,20 +24,6 @@ function updateMessagesOnScreen(messages){
 
     div_messages.innerHTML = list_messages
 }
-
-
-// function updateMessagesOnScreen(messages){
-//     const div_messages = document.querySelector('#messages');
-    
-//     let list_messages = '<ul>'
-//     messages.forEach(message => {
-//         const messageClass = message.user === user ? 'sent' : 'received';
-//         list_messages += `<li class="${messageClass}">${message.user}: ${message.msg}</li>`
-//     })
-//     list_messages += '</ul>';
-
-//     div_messages.innerHTML = list_messages
-// }
 
 
 document.addEventListener('DOMContentLoaded', () =>{
