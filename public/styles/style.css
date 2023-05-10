@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.message {
+  display: flex;
+}
+
+.message.sent {
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+.message.received {
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+  ul {
+    list-style-type: none;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
